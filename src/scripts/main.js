@@ -79,8 +79,27 @@ let studentPassFailSubject;
 let studentPassFailInfo;
 
 // copied from chapter
-const createStudentComponent = (name, subject, info, score) => {
-    if (score >= 60) {
+// const createStudentComponent = (name, subject, info, score) => {
+//     if (score >= 60) {
+//         studentPassFailName = "xx-large passing";
+//         studentPassFailSubject = "borderd dashed section--padded";
+//         studentPassFailInfo = "pushRight";
+//     } else {
+//         studentPassFailName = "failing";
+//     }
+//     return `
+//         <div class="student">
+//             <h1 class="${studentPassFailName}">${name}</h1>
+//             <section class="${studentPassFailSubject}">${subject}</section>
+//             <aside class="${studentPassFailInfo}>${info}</aside>
+//         </div>
+//     `
+// }
+
+// creating function with only 1 argument and 4 components:
+
+const createStudentComponent = (param) => {
+    if (param.score >= 60) {
         studentPassFailName = "xx-large passing";
         studentPassFailSubject = "borderd dashed section--padded";
         studentPassFailInfo = "pushRight";
@@ -89,24 +108,20 @@ const createStudentComponent = (name, subject, info, score) => {
     }
     return `
         <div class="student">
-            <h1 class="${studentPassFailName}">${name}</h1>
-            <section class="${studentPassFailSubject}">${subject}</section>
-            <aside class="${studentPassFailInfo}>${info}</aside>
+            <h1 class="${studentPassFailName}">${param.name}</h1>
+            <section class="${studentPassFailSubject}">${param.subject}</section>
+            <aside class="${studentPassFailInfo}">${param.info}</aside>
         </div>
     `
 }
-console.log("create student component", createStudentComponent());
+// console.log("create student component", createStudentComponent());
+
 const studentContainer = document.querySelector("#container")
 
 
 for (let i = 0; i < students.length; i++) {
     const student = students[i]
-    studentContainer.innerHTML += createStudentComponent(
-        student.name,
-        student.subject,
-        student.info,
-        student.score
-    )
+    studentContainer.innerHTML += createStudentComponent(student);
 }
 // copied from chapter
 // for (const student of students) {
